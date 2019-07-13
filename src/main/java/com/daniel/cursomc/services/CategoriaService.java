@@ -7,12 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-
 import com.daniel.cursomc.domain.Categoria;
+import com.daniel.cursomc.dto.CategoriaDTO;
 import com.daniel.cursomc.repositories.CategoriaRepository;
 import com.daniel.cursomc.services.exception.DataIntegrityException;
 import com.daniel.cursomc.services.exception.ObjectNotFoundException;
@@ -61,11 +60,13 @@ public class CategoriaService {
 	
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String direction, String orderBy) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
-		
 		return repo.findAll(pageRequest);
 
-
-
+	}
+	
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(),objDto.getNome());
+		
 	}
 
 
