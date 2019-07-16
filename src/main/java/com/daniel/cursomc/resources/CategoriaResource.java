@@ -63,7 +63,6 @@ public class CategoriaResource {
 		List<Categoria> list = service.findAll();
 		List<CategoriaDTO> listDTO = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDTO);
-
 	}
 	
 	@RequestMapping(value="/page", method=RequestMethod.GET)
@@ -75,16 +74,6 @@ public class CategoriaResource {
 		Page<Categoria> list = service.findPage(page, linesPerPage, direction,orderBy);
 		Page<CategoriaDTO> listDto = list.map(obj -> new CategoriaDTO(obj));
 		return ResponseEntity.ok().body(listDto);
-
-
-
 	}
-
-
-
-
-
-
-
 
 }
