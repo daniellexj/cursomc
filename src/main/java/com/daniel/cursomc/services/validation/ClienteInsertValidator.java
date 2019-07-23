@@ -40,7 +40,7 @@ public class ClienteInsertValidator implements ConstraintValidator < ClienteInse
         Cliente axu = repo.findByEmail(objDto.getEmail());
         
         if (axu != null) {
-        	list.add(new FieldMessage("email ","E-mail ja cadastrado"));
+        	list.add(new FieldMessage("email","E-mail ja cadastrado"));
         }
 
         // inclua os testes aqui, inserindo erros na lista
